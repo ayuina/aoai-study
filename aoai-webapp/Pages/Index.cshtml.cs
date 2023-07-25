@@ -21,7 +21,7 @@ public class IndexModel : PageModel
         _modelDeploy = config["AOAI:ModelDeployment"] ?? string.Empty;
     }
 
-    public async Task OnGet()
+    public void OnGet()
     {
     }
 }

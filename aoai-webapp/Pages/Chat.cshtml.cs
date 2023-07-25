@@ -44,4 +44,11 @@ public class ChatModel : PageModel
 
         ViewData["Message"] = response.Value.Choices[0].Message.Content;
     }
+
+    //https://www.learnrazorpages.com/razor-pages/handler-methods#named-handler-methods
+
+    public async Task OnPostChat(ChatMessage[] messages)
+    {
+
+    }
 }
