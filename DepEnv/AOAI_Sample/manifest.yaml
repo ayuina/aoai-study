@@ -1,5 +1,5 @@
 name: AOAI_Sample
-version: 0.1.0
+version: 0.2.0
 summary: AOAI and app dev resources
 description: Deploys Azure OpenAI, Web App, API Management, Monitor, etc...
 runner: ARM
