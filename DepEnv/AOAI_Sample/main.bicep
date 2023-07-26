@@ -1,4 +1,4 @@
-param prefix string = 'ayuina0726a'
+param prefix string = 'ayuina0726b'
 param region string = 'japaneast'
 param aoaiRegion string = 'eastus'
 

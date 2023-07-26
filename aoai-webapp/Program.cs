@@ -1,6 +1,7 @@
 using Azure.AI.OpenAI;
 using Azure;
 using Azure.Identity;
+using Microsoft.Azure.Cosmos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,14 @@ builder.Services.AddSingleton<OpenAIClient>(
             new Uri(builder.Configuration["AOAI:Endpoint"] ?? ""), 
             new DefaultAzureCredential())
 );
+
+// add cosmos client to service
+builder.Services.AddSingleton<CosmosClient>(
+           new CosmosClient(
+               builder.Configuration["Cosmos:Endpoint"] ?? "",
+               new DefaultAzureCredential())
+           );
+
 
 var app = builder.Build();
 
