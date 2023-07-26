@@ -1,0 +1,26 @@
+name: AOAI_Sample
+version: 0.1.0
+summary: AOAI and app dev resources
+description: Deploys Azure OpenAI, Web App, API Management, Monitor, etc...
+runner: ARM
+templatePath: main.json
+parameters:
+- id: "prefix"
+  name: "prefix"
+  description: "prefix name for unique id"
+  default: ""
+  type: "string"
+  required: true
+- id: "region"
+  name: "region"
+  description: "Azure region for AppDev resources"
+  default: ""
+  type: "string"
+  required: true
+- id: "aoaiRegion"
+  name: "aoaiRegion"
+  description: "Azure OpenAI region"
+  default: ""
+  type: "string"
+  required: true
+
