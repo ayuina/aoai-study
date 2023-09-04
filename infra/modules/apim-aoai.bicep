@@ -1,8 +1,7 @@
 param apimName string
 param aoaiName string
-param aoaiSpecDocs array
-
-var policyContent = loadTextContent('../aoai-specs/openai-policy.xml')
+param aoaiSpec string
+param aoaiPolicy string
 
 resource apim 'Microsoft.ApiManagement/service@2023-03-01-preview' existing = {
   name: apimName
@@ -22,6 +21,34 @@ resource nv 'Microsoft.ApiManagement/service/namedValues@2023-03-01-preview' = {
   }
 }
 
+resource openaiApis 'Microsoft.ApiManagement/service/apis@2023-03-01-preview' = {
+  parent: apim
+  name: 'OpenAI-${json(aoaiSpec).info.version}'
+  properties: {
+    path: 'openai'
+    subscriptionRequired: true
+    protocols: [
+      'https'
+    ]
+    type: 'http'
+    format: 'openapi'
+    serviceUrl: '${aoai.properties.endpoint}openai'
+    subscriptionKeyParameterNames: {
+      header: 'Ocp-Apim-Subscription-Key'
+    }
+    value: aoaiSpec
+  }
+
+  resource policy 'policies' = {
+    name: 'policy'
+    properties: {
+      format: 'rawxml'
+      value: aoaiPolicy
+    }
+  }
+}
+
+/*
 resource aoaiVS 'Microsoft.ApiManagement/service/apiVersionSets@2023-03-01-preview' = {
   parent: apim
   name: 'OpenAI'
@@ -61,3 +88,4 @@ resource openaiApiPolicies 'Microsoft.ApiManagement/service/apis/policies@2023-0
     value: policyContent
   }
 }]
+*/

@@ -5,11 +5,8 @@ param region string = 'japaneast'
 param aoaiRegion string = 'japaneast'
 
 var rgName = '${prefix}-rg'
-var aoaiSpecDocs = [
-  loadTextContent('./aoai-specs/openai-spec.2023-05-15.json')
-  loadTextContent('./aoai-specs/openai-spec.2023-06-01-preview.json')
-  loadTextContent('./aoai-specs/openai-spec.2023-07-01-preview.json')
-]
+var aoaiSpec = loadTextContent('./aoai-specs/openai-spec.2023-07-01-preview.json')
+var aoaiPolicy = loadTextContent('./aoai-specs/openai-policy.xml')
 
 resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: rgName
@@ -71,7 +68,8 @@ module apim_aoai 'modules/apim-aoai.bicep' = {
   params:{
     apimName: apim.outputs.apimName
     aoaiName: aoai.outputs.aoaiAccountName
-    aoaiSpecDocs: aoaiSpecDocs
+    aoaiSpec: aoaiSpec
+    aoaiPolicy: aoaiPolicy
   }
 }
 
