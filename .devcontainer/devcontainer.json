@@ -6,21 +6,19 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"version": "latest",
-			"enableNonRootDocker": "true",
-			"moby": "true"
-		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
 		"ghcr.io/devcontainers/features/dotnet:1": {},
-		"ghcr.io/azure/azure-dev/azd:0": {}
+		"ghcr.io/azure/azure-dev/azd:0": {},
+		"ghcr.io/devcontainers/features/powershell:1": {}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"GitHub.copilot",
 				"ms-azuretools.vscode-bicep",
-				"humao.rest-client"
+				"humao.rest-client",
+				"ms-vscode.powershell"
 			]
 		}
 	}

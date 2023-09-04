@@ -67,3 +67,5 @@ resource aoaiDiag 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
     ]
   }
 }
+
+output aoaiAccountName string = aoai.name

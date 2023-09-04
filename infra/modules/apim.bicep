@@ -80,3 +80,5 @@ resource apimDiag 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
   }
 
 }
+
+output apimName string = apiman.name
